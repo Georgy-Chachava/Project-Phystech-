@@ -5,7 +5,9 @@ from Images import *
 from REPLICS import *
 import pygame.font
 from pygame.draw import *
+from visual import *
 
+WHITE = (255, 255, 255)
 
 def click(event, active_character):
     if event.pos[0] < 200:
@@ -104,6 +106,7 @@ while not finished:
         active_character = Death[number_death]
         d = active_character.replics
         i = 0
+        #t = 0
 
     if t==0:
         active_character = Koldunov
@@ -122,32 +125,24 @@ while not finished:
     answer_1 = answers[0]
     answer_2 = answers[1]
 
-
-
     active_character.output()
 
-    #ans = rnd.randint(0, 1)
-
-   # teK = text.render('1.', True, (255, 255, 255))
-   # screen.blit(teK, (60, 200))
-    teK = text_2.render(str(answer_1[0]), True, (255, 255, 255))
-    screen.blit(teK, (60, 205))
+    split_text(screen, 60, 205, str(answer_1[0]), 15, 16, WHITE)
 
     teK = text.render(active_character.name, True, (50, 50, 50))
     screen.blit(teK, (40, 510))
 
-   # teK = text.render('2.', True, (255, 255, 255))
-   # screen.blit(teK, (20, 610))
-    teK = text_2.render(str(answer_2[0]), True, (255, 255, 255))
-    screen.blit(teK, (230, 205))
-
+    split_text(screen, 230, 205, str(answer_2[0]), 14, 16, WHITE)
+    
     teK = text.render('Недель на Физтехе', True, (255, 255, 255))
     screen.blit(teK, (20, 620))
     teK = text.render(str(t+1), True, (255, 255, 255))
     screen.blit(teK, (175, 620))
 
-    teK = text.render(str(lst[i]), True, (255, 255, 255))
-    screen.blit(teK, (20, 150))
+    #teK = text.render(str(lst[i]), True, (255, 255, 255))
+    #screen.blit(teK, (20, 150))
+
+    split_text(screen, 20, 110, str(lst[i]), 39, 18, WHITE)
 
     k_1 = k // 2
     c_1 = c // 2
