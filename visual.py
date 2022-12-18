@@ -1,7 +1,21 @@
 import pygame
 import math
+import datetime
+
+def save_data(counter, data):
+    '''Запись данных о рекордах в файл.'''
+    with open('data.txt', 'a') as f:
+        print('Score #', counter, ': ', data, file = f)
+
+def new_session():
+    '''Объявляет о начале новой игровой сессии в файле data'''
+    now = datetime.datetime.now()
+    with open('data.txt', 'a') as f:
+        print('Game started at', now.strftime("%d-%m-%Y %H:%M"), file = f)
 
 def split_text(screen, x, y, text, width, font_size, color):
+
+    '''Осуществляет переносы текста.'''
 
     if text is not None:
 
@@ -66,7 +80,7 @@ def rotate_image(screen, image, x, y):
     if angle >180: angle = -(360-angle)
     angle = -angle/2
 
-    angle = bound(angle, -15, 15)
+    angle = bound(angle, -7, 7)
 
     rot_image = pygame.transform.rotate(image, angle)
     h = image.get_size()[1]/2

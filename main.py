@@ -75,7 +75,11 @@ r = 50
 m = 50
 t = 0
 record = 0
+death_count = 0
 number_death = 10
+
+new_session()
+
 while not finished:
 
     clock.tick(60)
@@ -254,10 +258,14 @@ while not finished:
             number_death = 7
 
         record = t + 1
+        death_count += 1
+        save_data(death_count, record)
 
     elif t == 200:
         number_death = 9
         record = t + 1
+        death_count += 1
+        save_data(death_count, record)
 
     pygame.display.update()
 
