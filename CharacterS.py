@@ -1,4 +1,5 @@
 import pygame
+import visual
 
 class Character():
     """класс, описывающий персонажей"""
@@ -11,5 +12,4 @@ class Character():
 
     def output(self):
         """рисование персонажа"""
-        rect = self.image.get_rect(center=(200, 345))
-        self.screen.blit(self.image, rect)
+        visual.rotate_image(self.screen, self.image, 200, 345)

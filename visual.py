@@ -1,4 +1,5 @@
 import pygame
+import math
 
 def split_text(screen, x, y, text, width, font_size, color):
 
@@ -36,4 +37,41 @@ def split_text(screen, x, y, text, width, font_size, color):
             if k == len(words):
                 text1 = font.render(f, True, color)
                 screen.blit(text1, (x, y))
-            
+
+def bound(x, x_min, x_max):
+
+    '''Простейший ограничитель параметра.'''
+
+    if x < x_min:
+        return x_min
+    if x > x_max:
+        return x_max
+    return x
+
+def rotate_image(screen, image, x, y):
+    '''
+    Поворот изображения на малые углы относительно центра нижней стороны.
+    x, y - координаты начального положения центра изображения.
+    '''
+
+    correction_angle = 90
+
+    image_rect = image.get_rect(center = (x, y))
+
+    mx, my = pygame.mouse.get_pos()
+    dx, dy = mx - image_rect.centerx, my - image_rect.centery
+    angle = math.degrees(math.atan2(-dy, dx)) - correction_angle
+
+    if angle < 0: angle+=360
+    if angle >180: angle = -(360-angle)
+    angle = -angle/2
+
+    angle = bound(angle, -15, 15)
+
+    rot_image = pygame.transform.rotate(image, angle)
+    h = image.get_size()[1]/2
+    ctr = list(image_rect.center)
+    ctr[0] = ctr[0] + h*math.tan(-angle/180*math.pi)
+    rot_image_rect = rot_image.get_rect(center = ctr)
+
+    screen.blit(rot_image, rot_image_rect.topleft)
