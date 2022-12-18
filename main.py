@@ -158,8 +158,6 @@ while not finished:
         if event.type == pygame.QUIT:
             finished = True
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            if k < 1 or k > 99 or c < 1 or c > 99 or r < 1 or r > 99 or m < 1 or m > 99:
-                finished = True
             ans, active_character = click(event, active_character)
 
     if ans == 0:
@@ -179,8 +177,8 @@ while not finished:
         t += 1
 
     if k<1 or k>99 or c<1 or c>99 or r<1 or r>99 or m<1 or m>99:
-        #print(t)
-        #print( k, c, r, m)
+        print(t)
+        print( k, c, r, m)
         if k>99 & c>99 & r>99 & m>99:
             number_death = 8
         elif k<1:

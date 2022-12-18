@@ -22,7 +22,7 @@ best_friend_image = pygame.image.load('images/Best_Friend_Photo1.png')
 
 roommate_image = pygame.image.load('images/Roommate_Photo1.png')
 
-gavrikov_image = pygame.image.load('images/Gavrikov_Photo1.jpg')
+gavrikov_image = pygame.image.load('images/Gavrikov_Photo1.png')
 
 showerman_image = pygame.image.load('images/Shavermyatnik_Photo1.png')
 
@@ -32,7 +32,7 @@ khirianov_image = pygame.image.load('images/Khirianov_Photo1.png')
 
 paukov_image = pygame.image.load('images/Paukov_Photo1.png')
 
-agent_FPMI_image = pygame.image.load('images/Agent_FPMI_final_Photo.jpg')
+agent_FPMI_image = pygame.image.load('images/Agent_FPMI_final_Photo.png')
 
 koldunov_image = pygame.image.load('images/Koldunov_Photo1.png')
 
