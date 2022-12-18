@@ -12,7 +12,7 @@ WHITE = (255, 255, 255)
 def click(event, active_character):
     if event.pos[0] < 200:
         ans = 0
-    elif event.pos[0] > 200:
+    elif event.pos[0] >= 200:
         ans = 1
     active_character = None
     return ans, active_character
@@ -63,6 +63,7 @@ Death = [Malo_k, Malo_c, Malo_r, Malo_m, Mnogo_k, Mnogo_c, Mnogo_r, Mnogo_m, All
 
 NPC = [Kiselev, Roommate, Ivanov, PE_teacher, BGD_teacher, Groupmate, Dekanat, Senator, English_teacher,
        Best_friend, Roommate, Gavrikov, Showerman, Cat, Khiryanov, Paukov, Agent_FPMI]
+
 finished = False
 ans = None
 active_character = None
@@ -71,7 +72,8 @@ c = 50
 r = 50
 m = 50
 t = 0
-number_death =10
+record = 0
+number_death = 10
 while not finished:
 
     clock.tick(60)
@@ -102,18 +104,23 @@ while not finished:
     teK = text.render('Деньги', True, (255, 255, 255))
     screen.blit(teK, (200, 43))
 
-    if number_death != 10:
+    if (number_death != 10) and (t>0):
         active_character = Death[number_death]
         d = active_character.replics
         i = 0
-        #t = 0
+        t = -1
 
     if t==0:
         active_character = Koldunov
         d = active_character.replics
+        number_death = 10
         i = 0
+        k = 50
+        c = 50
+        r = 50
+        m = 50
 
-    else:
+    elif t>0:
         if active_character == None:
             index = rnd.randint(0, len(NPC) - 1)
             active_character = NPC[index]
@@ -133,14 +140,18 @@ while not finished:
     screen.blit(teK, (40, 510))
 
     split_text(screen, 230, 205, str(answer_2[0]), 14, 16, WHITE)
-    
-    teK = text.render('Недель на Физтехе', True, (255, 255, 255))
-    screen.blit(teK, (20, 620))
-    teK = text.render(str(t+1), True, (255, 255, 255))
-    screen.blit(teK, (175, 620))
 
-    #teK = text.render(str(lst[i]), True, (255, 255, 255))
-    #screen.blit(teK, (20, 150))
+    if t<0:
+        teK = text.render('Игра окончена! Ваш рекорд:', True, (255, 255, 255))
+        screen.blit(teK, (20, 620))
+        teK = text.render(str(record), True, (255, 255, 255))
+        screen.blit(teK, (260, 620))
+
+    else:
+        teK = text.render('Недель на Физтехе:', True, (255, 255, 255))
+        screen.blit(teK, (20, 620))
+        teK = text.render(str(t+1), True, (255, 255, 255))
+        screen.blit(teK, (185, 620))
 
     split_text(screen, 20, 110, str(lst[i]), 39, 18, WHITE)
 
@@ -160,26 +171,27 @@ while not finished:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             ans, active_character = click(event, active_character)
 
-    if ans == 0:
-        k = k + answer_1[1]
-        c = c + answer_1[2]
-        r = r + answer_1[3]
-        m = m + answer_1[4]
-        ans = None
-        t += 1
+    if ((1<=k<=99) and (1<=c<=99) and (1<=r<=99) and (1<=m<=99) and (t<200)) or (number_death != 10):
+        
+        if ans == 0:
+            k = k + answer_1[1]
+            c = c + answer_1[2]
+            r = r + answer_1[3]
+            m = m + answer_1[4]
+            ans = None
+            t += 1
 
-    elif ans == 1:
-        k += answer_2[1]
-        c += answer_2[2]
-        r += answer_2[3]
-        m += answer_2[4]
-        ans = None
-        t += 1
+        elif ans == 1:
+            k += answer_2[1]
+            c += answer_2[2]
+            r += answer_2[3]
+            m += answer_2[4]
+            ans = None
+            t += 1
 
-    if k<1 or k>99 or c<1 or c>99 or r<1 or r>99 or m<1 or m>99:
-        print(t)
-        print( k, c, r, m)
-        if k>99 & c>99 & r>99 & m>99:
+    elif t<200:
+        
+        if (k>99) and (c>99) and (r>99) and (m>99):
             number_death = 8
         elif k<1:
             number_death = 0
@@ -197,10 +209,13 @@ while not finished:
             number_death = 6
         elif m>99:
             number_death = 7
+
+        record = t + 1
+
     elif t==200:
         number_death = 9
-    #   finished = True
-
-
+        record = t + 1
+    
     pygame.display.update()
+
 pygame.quit()
