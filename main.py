@@ -182,17 +182,17 @@ while not finished:
     if cursor_position < 200:
         if 0 < answer_1[1] ** 2 < 65:
             pygame.draw.circle(screen, (255, 255, 255), (175, 25), 3)
-        if 0 < answer_1[2] ** 2 < 65:
-            pygame.draw.circle(screen, (255, 255, 255), (355, 25), 3)
         if 0 < answer_1[3] ** 2 < 65:
+            pygame.draw.circle(screen, (255, 255, 255), (355, 25), 3)
+        if 0 < answer_1[2] ** 2 < 65:
             pygame.draw.circle(screen, (255, 255, 255), (175, 55), 3)
         if 0 < answer_1[4] ** 2 < 65:
             pygame.draw.circle(screen, (255, 255, 255), (355, 55), 3)
         if 65 < answer_1[1] ** 2:
             pygame.draw.circle(screen, (255, 255, 255), (175, 25), 5)
-        if 65 < answer_1[2] ** 2:
-            pygame.draw.circle(screen, (255, 255, 255), (355, 25), 5)
         if 65 < answer_1[3] ** 2:
+            pygame.draw.circle(screen, (255, 255, 255), (355, 25), 5)
+        if 65 < answer_1[2] ** 2:
             pygame.draw.circle(screen, (255, 255, 255), (175, 55), 5)
         if 65 < answer_1[4] ** 2:
             pygame.draw.circle(screen, (255, 255, 255), (355, 55), 5)
@@ -202,17 +202,17 @@ while not finished:
 
         if 0 < answer_2[1] ** 2 < 65:
             pygame.draw.circle(screen, (255, 255, 255), (175, 25), 3)
-        if 0 < answer_2[2] ** 2 < 65:
-            pygame.draw.circle(screen, (255, 255, 255), (355, 25), 3)
         if 0 < answer_2[3] ** 2 < 65:
+            pygame.draw.circle(screen, (255, 255, 255), (355, 25), 3)
+        if 0 < answer_2[2] ** 2 < 65:
             pygame.draw.circle(screen, (255, 255, 255), (175, 55), 3)
         if 0 < answer_2[4] ** 2 < 65:
             pygame.draw.circle(screen, (255, 255, 255), (355, 55), 3)
         if 65 < answer_2[1] ** 2:
             pygame.draw.circle(screen, (255, 255, 255), (175, 25), 5)
-        if 65 < answer_2[2] ** 2:
-            pygame.draw.circle(screen, (255, 255, 255), (355, 25), 5)
         if 65 < answer_2[3] ** 2:
+            pygame.draw.circle(screen, (255, 255, 255), (355, 25), 5)
+        if 65 < answer_2[2] ** 2:
             pygame.draw.circle(screen, (255, 255, 255), (175, 55), 5)
         if 65 < answer_2[4] ** 2:
             pygame.draw.circle(screen, (255, 255, 255), (355, 55), 5)
